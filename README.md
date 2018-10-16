@@ -1,5 +1,10 @@
 # MaterialNg6
 
+created:
+ng new material-ng --routing --style=scss
+npm i --save @angular/material @angular/cdk @angular/animations
+npm i --save hammerjs //for gestures support
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
 ## Development server

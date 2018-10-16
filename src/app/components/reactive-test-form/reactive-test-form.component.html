@@ -1,0 +1,52 @@
+<form [formGroup]="testForm" (ngSubmit)="submitHandler()">
+
+  <input formControlName="email">email
+  <span *ngIf="email.invalid && email.touched">
+    Your email does not look right
+  </span> <br>  
+
+  <input formControlName="password">password
+  <span *ngIf="password.invalid && password.touched">
+    That password sucks...
+  </span> <br>
+
+  <input formControlName="age">
+  <span *ngIf="age.errors?.min && age.touched">
+    {{ age.errors.min.actual }} is young to use this app kiddo!
+  </span>
+  <span *ngIf="age.errors?.max && age.touched">
+    {{ age.errors.max.actual }} is too you old to use this app gramps!
+  </span>age
+      <br>
+  <input formControlName="amount" 
+    onlyNumberNg="true"
+    (contextmenu)="onRightClick($event)">amount
+
+  <p>Cell Phone</p>
+  <div formGroupName="cellPhone">
+    <input formControlName="area">
+    <input formControlName="prefix">
+    <input formControlName="line">
+  </div>
+  
+  <p>Home Phone</p>
+  <div formGroupName="homePhone">
+    <input formControlName="area">
+    <input formControlName="prefix">
+    <input formControlName="line">
+  </div>
+  <br>
+  <div formArrayName="otherPhonesA">
+    <div *ngFor="let oPhone of otherPhones.controls; let i=index" [formGroupName]="i">
+      <p>Optional phone {{i+1}}</p>
+      <input formControlName="area">
+      <input formControlName="prefix">
+      <input formControlName="line">
+    </div>
+  </div>
+  <button mat-raised-button color="primary" (click)="addPhone()">Add Phone Number</button>
+  
+  <hr><hr>
+  <button [disabled]="testForm.invalid" >Let's Do it!</button>
+
+</form>
