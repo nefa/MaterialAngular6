@@ -12,6 +12,7 @@ import { MaterialsComponent } from './components/materials/materials.component';
 import { MaterialModule } from './material.module';
 import { ReactiveTestFormComponent } from './components/reactive-test-form/reactive-test-form.component';
 import { InputOnlyNumberDirective } from './directives/input-only-number.directive';
+import { MaterialTestFormComponent } from './components/material-test-form/material-test-form.component';
 
 
 
@@ -20,7 +21,8 @@ import { InputOnlyNumberDirective } from './directives/input-only-number.directi
     AppComponent,
     MaterialsComponent,
     ReactiveTestFormComponent,
-    InputOnlyNumberDirective
+    InputOnlyNumberDirective,
+    MaterialTestFormComponent
   ],
   imports: [
     BrowserModule,

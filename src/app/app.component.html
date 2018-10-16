@@ -30,15 +30,19 @@
         <mat-icon>voicemail</mat-icon>
         <span>Check voicemail</span>
       </button>
-      <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
+      <button mat-menu-item routerLink="materialTestForm">
+        <!-- <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span> -->
+          <mat-icon class="material-icons">
+            ballot
+          </mat-icon>
+          <span>Material form</span>
       </button>
       <button mat-menu-item routerLink="reactiveTestForm">
         <mat-icon class="material-icons">
           ballot
         </mat-icon>
-        <span>Form</span>
+        <span>Form reactive</span>
       </button>
     </mat-menu>
   </mat-toolbar-row>

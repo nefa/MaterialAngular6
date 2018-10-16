@@ -1,0 +1,44 @@
+<!-- <ng-container> -->
+  <!-- <mat-toolbar class="example-header">Header</mat-toolbar> -->
+
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav  class="example-sidenav"
+      mode="side" opened 
+      [fixedInViewport]="formOptions.value.fixed"
+      [fixedTopGap]="formOptions.value.top" 
+      [fixedBottomGap]="formOptions.value.bottom">
+        {{formOptions.value.fixed ? 'Fixed' : 'Non-fixed'}} Valid data
+
+        <p *ngIf="user.value && user.valid"><span>Nume: </span>{{user.value}}</p>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content [formGroup]="materialForm">
+      <p>
+        <!-- <mat-checkbox formControlName="fixed">Fixed</mat-checkbox> -->
+      </p>
+      <p>
+        <!-- <mat-form-field>
+          <input matInput type="number" formControlName="top" placeholder="Top gap">
+        </mat-form-field> -->
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <!-- <input matInput type="number" formControlName="bottom" placeholder="Bottom gap"> -->
+          <mat-label>{{(user.invalid && user.touched) ? 'name to short' : 'input name...'}} </mat-label>
+          <input placeholder="Placeholder"
+            matInput
+            formControlName="user">
+          <mat-icon matSuffix class="material-icons">account_circle</mat-icon>
+        </mat-form-field>
+      </p>
+      <!-- <p>
+        <button mat-button (click)="sidenav.toggle()">Toggle</button>
+      </p> -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!-- <mat-toolbar class="example-footer">Footer</mat-toolbar> -->
+<!-- </ng-container> -->
+
+<!-- <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div> -->
