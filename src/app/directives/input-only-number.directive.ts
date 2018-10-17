@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 })
 export class InputOnlyNumberDirective {
 
-  private regex: RegExp = new RegExp(/^[0-9]+(\.[0-9]*){0,1}$/g);
+  private regex: RegExp = new RegExp(/^[0-9]+(\.[0-9]*){0,1}$/g);//un used
 
   constructor(private el: ElementRef) { }
 
