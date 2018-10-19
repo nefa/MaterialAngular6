@@ -9,7 +9,9 @@
       [fixedBottomGap]="formOptions.value.bottom">
         {{formOptions.value.fixed ? 'Fixed' : 'Non-fixed'}} Valid data
 
-        <p *ngIf="userF.value && userF.valid"><span>Nume: </span>{{userF.value}}</p>
+        <p *ngIf="userF.value && userF.valid"><span>Name: </span>{{userF.value}}</p>
+        {{codeF.value}}
+        <p *ngIf="codeF.valid"><span>Code: </span>{{codeF.value}}</p>
 
     </mat-sidenav>
 
@@ -32,12 +34,14 @@
         </mat-form-field>
       </p>
       <p>
+        <!-- {{codeF.errors | json}} -->
         <mat-form-field appearance="outline">
-          <mat-label>{{(codeF.invalid && codeF.touched) ? 'code to short' : 'input code...'}} </mat-label>
+          <mat-label>{{(codeF.errors && codeF.errors.minLength && codeF.touched) ? 'code to short' : 'input code...'}}</mat-label>
+          <!-- <mat-label>{{x}}</mat-label> -->
           <input matInput placeholder="numbers only"
             formControlName="code" 
               onlyNumberNg="true"
-              (contextmenu)="onRightClick($event)">
+              [(ngModel)]="code" (ngModelChange)="onCodeChange($event)">
         </mat-form-field>
       </p>
       <!-- <p>
