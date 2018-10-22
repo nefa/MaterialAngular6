@@ -10,6 +10,12 @@ export class MaterialTestFormComponent implements OnInit {
   
   formOptions: FormGroup;
   materialForm: FormGroup;
+  selectedTemplate = ''
+  templates = [
+    { id: 1, templateA: 'url1', selected: false }, 
+    { id: 2, templateA: 'url2', selected: false },
+    { id: 3, templateA: 'url3', selected: false }
+  ];
 
   constructor(private fb: FormBuilder) { }
  
@@ -26,6 +32,7 @@ export class MaterialTestFormComponent implements OnInit {
         Validators.minLength(3), 
         // Validators.maxLength(6),
       ])],
+      templates: this.fb.array(this.templates.map(t => this.fb.control(t))) || [],
     });
   }
 
@@ -35,6 +42,10 @@ export class MaterialTestFormComponent implements OnInit {
 
   get codeF() {
     return this.materialForm.get('code');
+  }
+
+  get templatesF(){
+    return this.materialForm.get('templates');
   }
 
   onCodeChange(value):void {

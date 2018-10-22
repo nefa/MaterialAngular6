@@ -44,6 +44,21 @@
               [(ngModel)]="code" (ngModelChange)="onCodeChange($event)">
         </mat-form-field>
       </p>
+       <p>
+        <mat-form-field>
+          <mat-select [(value)]="selectedTemplate" placeholder="template ?">
+            <mat-option *ngFor="let template of templatesF.value" [value]="template.templateA">
+              {{template.templateA}}
+            </mat-option>
+            <!-- <mat-option>None</mat-option>
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option2">Option 2</mat-option>
+            <mat-option value="option3">Option 3</mat-option> -->
+          </mat-select>
+        </mat-form-field>
+        
+        <span>You selected: {{selectedTemplate}}</span>
+      </p>
       <!-- <p>
         <button mat-button (click)="sidenav.toggle()">Toggle</button>
       </p> -->
