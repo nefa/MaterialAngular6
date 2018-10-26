@@ -10,12 +10,12 @@
         {{formOptions.value.fixed ? 'Fixed' : 'Non-fixed'}} Valid data
 
         <p *ngIf="userF.value && userF.valid"><span>Name: </span>{{userF.value}}</p>
-        {{codeF.value}}
         <p *ngIf="codeF.valid"><span>Code: </span>{{codeF.value}}</p>
 
     </mat-sidenav>
 
     <mat-sidenav-content [formGroup]="materialForm">
+      <form [formGroup]="materialForm" (ngSubmit)="onSubmit()">
       <p>
         <!-- <mat-checkbox formControlName="fixed">Fixed</mat-checkbox> -->
       </p>
@@ -44,24 +44,36 @@
               [(ngModel)]="code" (ngModelChange)="onCodeChange($event)">
         </mat-form-field>
       </p>
-       <p>
+      <!-- <p>
         <mat-form-field>
           <mat-select [(value)]="selectedTemplate" placeholder="template ?">
             <mat-option *ngFor="let template of templatesF.value" [value]="template.templateA">
               {{template.templateA}}
             </mat-option>
-            <!-- <mat-option>None</mat-option>
-            <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option2">Option 2</mat-option>
-            <mat-option value="option3">Option 3</mat-option> -->
           </mat-select>
         </mat-form-field>
-        
         <span>You selected: {{selectedTemplate}}</span>
+      </p> -->
+      <p>
+        <input type="radio" value="male" formControlName="gender"> Male
+        <input type="radio" value="female" formControlName="gender"> Female
       </p>
+      <!-- <div *ngFor=”let skill of skills.controls; let i=index”>
+        <input type=”checkbox” [formControl]=”skill” /> {{user.skills[i].name}}
+      </div> -->
+
+      <div *ngFor="let templ of paymentOptionsF.controls; let i=index">
+        <input type="checkbox" [formControl]="templ" /><span>template is:</span>{{this.templates[i] | json}} 
+      </div>
+        <!-- <input type="checkbox" value="payment1" formControlName="paymentOptions">
+        <input type="checkbox" value="payment2" formControlName="paymentOptions"> -->
       <!-- <p>
         <button mat-button (click)="sidenav.toggle()">Toggle</button>
       </p> -->
+      <div class="form-group">
+        <button [disabled]="materialForm.invalid" class="btn btn-primary">Register</button>
+      </div>
+    </form>
     </mat-sidenav-content>
   </mat-sidenav-container>
 

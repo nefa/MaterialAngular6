@@ -10,7 +10,8 @@ export class MaterialTestFormComponent implements OnInit {
   
   formOptions: FormGroup;
   materialForm: FormGroup;
-  selectedTemplate = ''
+  selectedTemplate = '';
+  isMaterialFormSubmited = false;
   templates = [
     { id: 1, templateA: 'url1', selected: false }, 
     { id: 2, templateA: 'url2', selected: false },
@@ -27,12 +28,15 @@ export class MaterialTestFormComponent implements OnInit {
     });
 
     this.materialForm = this.fb.group({
-      user: ['', Validators.minLength(3)],
+      user: ['', [Validators.required, Validators.minLength(3)]],
       code: ['', Validators.compose([
-        Validators.minLength(3), 
+        Validators.required,
+        Validators.minLength(3),
         // Validators.maxLength(6),
       ])],
-      templates: this.fb.array(this.templates.map(t => this.fb.control(t))) || [],
+      // templates: this.fb.array(this.templates.map(t => this.fb.control(t)), Validators.required) || [],
+      gender: ['', Validators.required],
+      paymentOptions: this.fb.array(this.templates.map(templ => this.fb.control(templ))),
     });
   }
 
@@ -44,8 +48,12 @@ export class MaterialTestFormComponent implements OnInit {
     return this.materialForm.get('code');
   }
 
-  get templatesF(){
+  get templatesF() {
     return this.materialForm.get('templates');
+  }
+
+  get paymentOptionsF() {
+    return this.materialForm.get('paymentOptions');
   }
 
   onCodeChange(value):void {
@@ -56,6 +64,11 @@ export class MaterialTestFormComponent implements OnInit {
 
   onRightClickCode(e) {
   // <input (contextmenu)="onRightClickCode($event)">
+  }
+
+  onSubmit() {
+    this.isMaterialFormSubmited = true;
+    console.log(this.materialForm);
   }
 
 
