@@ -41,7 +41,7 @@
           <input matInput placeholder="numbers only"
             formControlName="code" 
               onlyNumberNg="true"
-              [(ngModel)]="code" (ngModelChange)="onCodeChange($event)">
+               (ngModelChange)="onCodeChange($event)">
         </mat-form-field>
       </p>
       <!-- <p>
@@ -62,8 +62,8 @@
         <input type=”checkbox” [formControl]=”skill” /> {{user.skills[i].name}}
       </div> -->
 
-      <div *ngFor="let templ of paymentOptionsF.controls; let i=index">
-        <input type="checkbox" [formControl]="templ" /><span>template is:</span>{{this.templates[i] | json}} 
+      <div formArrayName="paymentOptions" *ngFor="let templ of paymentOptionsF.controls; let i=index">
+        <input type="checkbox" [formControlName]="i" /><span>template is:</span>
       </div>
         <!-- <input type="checkbox" value="payment1" formControlName="paymentOptions">
         <input type="checkbox" value="payment2" formControlName="paymentOptions"> -->

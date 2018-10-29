@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, FormControl, FormArray } from '@angular/forms';
+
+
+const minSelectedCheckboxes = (min = 1) => {
+  const validator = formArray => {
+    const total = formArray.controls.map(c => c.value).reduce((acc, current)=> current ? acc + current: acc, 0);
+
+    return total >= min ? null : { required: true };
+  };
+
+  return validator;
+}; 
 
 @Component({
   selector: 'app-material-test-form',
@@ -27,6 +38,11 @@ export class MaterialTestFormComponent implements OnInit {
       top: 0
     });
 
+    const _pOptions = this.templates.map(t => new FormControl(false))
+    _pOptions[0].setValue(true);
+
+
+
     this.materialForm = this.fb.group({
       user: ['', [Validators.required, Validators.minLength(3)]],
       code: ['', Validators.compose([
@@ -36,7 +52,8 @@ export class MaterialTestFormComponent implements OnInit {
       ])],
       // templates: this.fb.array(this.templates.map(t => this.fb.control(t)), Validators.required) || [],
       gender: ['', Validators.required],
-      paymentOptions: this.fb.array(this.templates.map(templ => this.fb.control(templ))),
+      // paymentOptions: this.fb.array(this.templates.map(templ => this.fb.control(templ))),
+      paymentOptions: new FormArray(_pOptions, minSelectedCheckboxes(1)),
     });
   }
 
