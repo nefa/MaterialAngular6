@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { ReactiveTestFormComponent } from './components/reactive-test-form/react
 import { InputOnlyNumberDirective } from './directives/input-only-number.directive';
 import { MaterialTestFormComponent } from './components/material-test-form/material-test-form.component';
 import { InputMaxCharsDirective } from './directives/input-max-chars.directive';
+import { TemplateFormComponent } from './components/template-form/template-form.component';
 
 
 
@@ -24,7 +25,8 @@ import { InputMaxCharsDirective } from './directives/input-max-chars.directive';
     ReactiveTestFormComponent,
     InputOnlyNumberDirective,
     MaterialTestFormComponent,
-    InputMaxCharsDirective
+    InputMaxCharsDirective,
+    TemplateFormComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { InputMaxCharsDirective } from './directives/input-max-chars.directive';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -42,7 +42,6 @@ export class MaterialTestFormComponent implements OnInit {
     _pOptions[0].setValue(true);
 
 
-
     this.materialForm = this.fb.group({
       user: ['', [Validators.required, Validators.minLength(3)]],
       code: ['', Validators.compose([
@@ -53,7 +52,7 @@ export class MaterialTestFormComponent implements OnInit {
       // templates: this.fb.array(this.templates.map(t => this.fb.control(t)), Validators.required) || [],
       gender: ['', Validators.required],
       // paymentOptions: this.fb.array(this.templates.map(templ => this.fb.control(templ))),
-      paymentOptions: new FormArray(_pOptions, minSelectedCheckboxes(1)),
+      paymentOptions: this.fb.array(_pOptions, minSelectedCheckboxes(1)),
     });
   }
 

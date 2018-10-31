@@ -1,21 +1,21 @@
 <!-- <ng-container> -->
   <!-- <mat-toolbar class="example-header">Header</mat-toolbar> -->
-
+  
   <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav  class="example-sidenav"
-      mode="side" opened 
-      [fixedInViewport]="formOptions.value.fixed"
-      [fixedTopGap]="formOptions.value.top" 
-      [fixedBottomGap]="formOptions.value.bottom">
-        {{formOptions.value.fixed ? 'Fixed' : 'Non-fixed'}} Valid data
-
-        <p *ngIf="userF.value && userF.valid"><span>Name: </span>{{userF.value}}</p>
-        <p *ngIf="codeF.valid"><span>Code: </span>{{codeF.value}}</p>
-
-    </mat-sidenav>
-
-    <mat-sidenav-content [formGroup]="materialForm">
-      <form [formGroup]="materialForm" (ngSubmit)="onSubmit()">
+    mode="side" opened 
+    [fixedInViewport]="formOptions.value.fixed"
+    [fixedTopGap]="formOptions.value.top" 
+    [fixedBottomGap]="formOptions.value.bottom">
+    {{formOptions.value.fixed ? 'Fixed' : 'Non-fixed'}} Valid data
+    
+    <p *ngIf="userF.value && userF.valid"><span>Name: </span>{{userF.value}}</p>
+    <p *ngIf="codeF.valid"><span>Code: </span>{{codeF.value}}</p>
+    
+  </mat-sidenav>
+  
+  <mat-sidenav-content [formGroup]="materialForm">
+    <form [formGroup]="materialForm" (ngSubmit)="onSubmit()">
       <p>
         <!-- <mat-checkbox formControlName="fixed">Fixed</mat-checkbox> -->
       </p>
