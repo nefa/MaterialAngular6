@@ -1,4 +1,14 @@
-<form #simpleForm>
-  
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+    <!-- inputs, checkboxes & radio buttons + dynamic elements -->
+  <!-- <div formArrayName="f.options" *ngFor="let opt of f.options.controls; let i=index">
+    <input type="checkbox" [formControlName]="i"> <span>options is: {{i}}</span>
+  </div> -->
+  <div *ngFor="let opt of options; let i=index">
+    <input type="checkbox" name="someOptions" id="someOptions" value="{{opt.title}}"
+      [(ngModel)]="opt.selected">
+  </div>
 
+  <div>
+    <button type="submit" >!submit!</button>
+  </div>
 </form>
