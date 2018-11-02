@@ -31,6 +31,7 @@ export class TemplateFormComponent implements OnInit, OnChanges {
 
   simpleForm: FormGroup;
   _options = [];
+  simpleText = '';
 
   constructor(private fb: FormBuilder) {
     
@@ -57,7 +58,9 @@ export class TemplateFormComponent implements OnInit, OnChanges {
     return this._options;
   }
 
-  onSubmit() {
-    console.log(this.options);
+  onSubmit(f) {
+    // console.log(this.options);
+    console.log(f.controls);
+    
   }
 }

@@ -15,6 +15,7 @@ import { InputOnlyNumberDirective } from './directives/input-only-number.directi
 import { MaterialTestFormComponent } from './components/material-test-form/material-test-form.component';
 import { InputMaxCharsDirective } from './directives/input-max-chars.directive';
 import { TemplateFormComponent } from './components/template-form/template-form.component';
+import { NumberInputComponent } from './components/common/number-input/number-input.component';
 
 
 
@@ -26,7 +27,8 @@ import { TemplateFormComponent } from './components/template-form/template-form.
     InputOnlyNumberDirective,
     MaterialTestFormComponent,
     InputMaxCharsDirective,
-    TemplateFormComponent
+    TemplateFormComponent,
+    NumberInputComponent
   ],
   imports: [
     BrowserModule,
