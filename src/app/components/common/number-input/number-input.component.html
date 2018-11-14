@@ -1,3 +1,18 @@
-<p>
-  <input type="text" name="{{config.id}}" id="{{config.id}}">
-</p>
+<div [formGroup]="numberInputFormGroup">
+  <label for="{{config.id}}"
+    *ngIf="config.label">{{config.label}}</label>
+  <!-- <input type="text" name="{{config.id}}" id="{{config.id}}" #ngModelObject="ngModel"
+    [value]="inputvalue"
+    [(ngModel)]="inputvalue"
+    (ngModelChange)="onChangeValue($event, ngModelObject)"
+      onlyNumberNg="true"> -->
+  
+  <input type="text" name="{{config.id}}" id="{{config.id}}"
+    formControlName="_inputValue"
+    (ngModelChange)="onChangeValue($event)"
+    (blur)="onBlur($event)"
+      onlyNumberNg="true">
+
+  <div *ngIf="control.errors" [ngStyle]="config.errorStyle">{{config.errorText}}</div>
+  {{control.errors | json}}
+</div>

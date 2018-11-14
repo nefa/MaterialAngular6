@@ -1,8 +1,10 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+
+import { Config as InputNrCptConfig } from '../common/number-input/number-input.component';
 
 export interface IDeserializable {
-  deserialize(props: any): this;
+  deserialize?(props: any): this;
 }
 
 export class Option implements IDeserializable {
@@ -10,7 +12,7 @@ export class Option implements IDeserializable {
   id:number|string;
   title:string;
   
-  deserialize(props) {
+  deserialize?(props) {
     Object.assign(this, props);
     return this;
   }
@@ -30,8 +32,10 @@ const templates = [
 export class TemplateFormComponent implements OnInit, OnChanges {
 
   simpleForm: FormGroup;
-  _options = [];
+  _options: Option[];
   simpleText = '';
+  numberCpVal = '';
+  numberCpConf: InputNrCptConfig;
 
   constructor(private fb: FormBuilder) {
     
@@ -41,12 +45,19 @@ export class TemplateFormComponent implements OnInit, OnChanges {
     //set collecntions maybe async...
     this.options = templates;
 
+    this.numberCpConf = new InputNrCptConfig({
+      id:'123rand',
+      label: 'test label 1',
+      errorText: 'replace error text here',
+      errorStyle: { 'border': 'solid 1px red', 'color': 'red' },
+      validators: [/** Validators.minLength(3), Validators.required*/]
+    })
     // this.simpleForm = this.fb.group({
     //   options: this.fb.array(this._options)
     // })
   }
 
-  ngOnChanges(changes:SimpleChanges ) {
+  ngOnChanges(changes:SimpleChanges) {
     // update/set collections here
   }
 
@@ -56,6 +67,14 @@ export class TemplateFormComponent implements OnInit, OnChanges {
 
   get options() {
     return this._options;
+  }
+
+  onNumberChange(e: FormControl) {
+    console.log('by change ---->', e);
+  }
+
+  onNumberInputBlur(e: FormControl) {
+    console.log('by blur <---', e);
   }
 
   onSubmit(f) {

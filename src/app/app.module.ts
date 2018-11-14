@@ -16,7 +16,7 @@ import { MaterialTestFormComponent } from './components/material-test-form/mater
 import { InputMaxCharsDirective } from './directives/input-max-chars.directive';
 import { TemplateFormComponent } from './components/template-form/template-form.component';
 import { NumberInputComponent } from './components/common/number-input/number-input.component';
-
+import { FormComponentsModule } from './form-components/form-components.module';
 
 
 @NgModule({
@@ -37,6 +37,7 @@ import { NumberInputComponent } from './components/common/number-input/number-in
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    FormComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

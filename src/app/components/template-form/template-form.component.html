@@ -3,11 +3,14 @@
   <!-- <div formArrayName="f.options" *ngFor="let opt of f.options.controls; let i=index">
     <input type="checkbox" [formControlName]="i"> <span>options is: {{i}}</span>
   </div> -->
+
+  <!-- check boxes -->
   <div *ngFor="let opt of options; let i=index">
     <input type="checkbox" name="someOptions" id="someOptions" value="{{opt.title}}"
       [(ngModel)]="opt.selected">
   </div>
 
+  <!-- text -->
   <div>
     <input [(ngModel)]="simpleText" name="simpleText" id="simpleText" 
       required minlength="4"
@@ -15,7 +18,12 @@
     <span *ngIf="f.submitted && sText.errors.required">required</span>
   </div>
 
-  <app-number-input [config]="{}"></app-number-input>
+  <app-number-input 
+    [config]="numberCpConf" 
+    [inputvalue]="2" 
+    (changeValue$)="onNumberChange($event)"
+    (blurInput$)="onNumberInputBlur($event)"></app-number-input>
+  <!-- <fc-number-input></fc-number-input> -->
 
   <div>
     <button type="submit" >!submit!</button>
