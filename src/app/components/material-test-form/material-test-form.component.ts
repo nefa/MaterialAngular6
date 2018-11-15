@@ -86,6 +86,5 @@ export class MaterialTestFormComponent implements OnInit {
 
   onSubmit() {
     this.isMaterialFormSubmited = true;
-    console.log(this.materialForm);
   }
 }

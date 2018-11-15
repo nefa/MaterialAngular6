@@ -30,7 +30,7 @@ export class NumberInputComponent implements OnInit, OnChanges {
 
   numberInputFormGroup: FormGroup
 
-  constructor(private fb:FormBuilder) {}
+  constructor(protected fb:FormBuilder) {}
 
   ngOnInit() {
     this.numberInputFormGroup = this.fb.group({
@@ -39,6 +39,7 @@ export class NumberInputComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    // console.log("changes", changes, this);
   }
 
   get control() {
@@ -51,7 +52,7 @@ export class NumberInputComponent implements OnInit, OnChanges {
     this.changeValue$.emit(this.control);
   }
 
-  onBlur(e) {
+  onBlur(e:string) {
     /** other ops ...*/
     this.blurInput$.emit(this.control);
   }

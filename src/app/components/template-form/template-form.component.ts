@@ -36,6 +36,7 @@ export class TemplateFormComponent implements OnInit, OnChanges {
   simpleText = '';
   numberCpVal = '';
   numberCpConf: InputNrCptConfig;
+  amountCpConf: InputNrCptConfig;
 
   constructor(private fb: FormBuilder) {
     
@@ -55,6 +56,14 @@ export class TemplateFormComponent implements OnInit, OnChanges {
     // this.simpleForm = this.fb.group({
     //   options: this.fb.array(this._options)
     // })
+    this.amountCpConf = new InputNrCptConfig({
+      id: '222amount',
+      label: 'amount label',
+      errorText: 'amount error text',
+      errorStyle: { 'border': 'solid 1px red', 'color': 'red'},
+      maxLength: 9,
+      validators: [ Validators.minLength(3), Validators.required ],
+    })
   }
 
   ngOnChanges(changes:SimpleChanges) {
@@ -69,12 +78,17 @@ export class TemplateFormComponent implements OnInit, OnChanges {
     return this._options;
   }
 
-  onNumberChange(e: FormControl) {
+  onNumberChange(e:FormControl) {
     console.log('by change ---->', e);
   }
 
-  onNumberInputBlur(e: FormControl) {
+  onNumberInputBlur(e:FormControl) {
     console.log('by blur <---', e);
+  }
+
+  onAmountBlur(e:FormControl) {
+    console.log('by amount blur <<-', e);
+    
   }
 
   onSubmit(f) {

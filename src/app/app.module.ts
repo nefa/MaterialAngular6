@@ -17,7 +17,7 @@ import { InputMaxCharsDirective } from './directives/input-max-chars.directive';
 import { TemplateFormComponent } from './components/template-form/template-form.component';
 import { NumberInputComponent } from './components/common/number-input/number-input.component';
 import { FormComponentsModule } from './form-components/form-components.module';
-
+import { AmountComponent, FloatNumnberPipe } from './components/common/amount/amount.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,10 @@ import { FormComponentsModule } from './form-components/form-components.module';
     MaterialTestFormComponent,
     InputMaxCharsDirective,
     TemplateFormComponent,
-    NumberInputComponent
+    NumberInputComponent,
+    AmountComponent,
+    FloatNumnberPipe
+    
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { FormComponentsModule } from './form-components/form-components.module';
     FormComponentsModule
   ],
   providers: [],
+  exports: [FloatNumnberPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

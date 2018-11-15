@@ -13,6 +13,10 @@
     (blur)="onBlur($event)"
       onlyNumberNg="true">
 
-  <div *ngIf="control.errors" [ngStyle]="config.errorStyle">{{config.errorText}}</div>
+  <div 
+    *ngIf="control.errors && (control.dirty || control.touched)" 
+    [ngStyle]="config.errorStyle">{{config.errorText}}
+  </div>
+
   {{control.errors | json}}
 </div>

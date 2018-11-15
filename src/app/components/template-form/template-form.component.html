@@ -24,6 +24,11 @@
     (changeValue$)="onNumberChange($event)"
     (blurInput$)="onNumberInputBlur($event)"></app-number-input>
   <!-- <fc-number-input></fc-number-input> -->
+  <hr/>
+  <app-amount 
+    [config]="amountCpConf"
+    (blurInput$)="onAmountBlur($event)">
+  </app-amount>
 
   <div>
     <button type="submit" >!submit!</button>
