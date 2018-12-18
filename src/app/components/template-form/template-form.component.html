@@ -18,17 +18,17 @@
     <span *ngIf="f.submitted && sText.errors.required">required</span>
   </div>
 
-  <app-number-input 
+  <app-number-input
     [config]="numberCpConf" 
     [inputvalue]="2" 
     (changeValue$)="onNumberChange($event)"
     (blurInput$)="onNumberInputBlur($event)"></app-number-input>
   <!-- <fc-number-input></fc-number-input> -->
   <hr/>
-  <app-amount 
+  <app-input-amount 
     [config]="amountCpConf"
     (blurInput$)="onAmountBlur($event)">
-  </app-amount>
+  </app-input-amount>
 
   <div>
     <button type="submit" >!submit!</button>

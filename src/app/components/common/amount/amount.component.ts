@@ -47,26 +47,37 @@ export class FloatNumnberPipe implements PipeTransform {
 }
 
 @Component({
-  selector: 'app-amount',
+  selector: 'app-input-amount',
   // templateUrl: '../number-input/number-input.component.html',
   templateUrl: './amount.component.html',
   styleUrls: ['./amount.component.scss']
 })
 export class AmountComponent extends NumberInputComponent /*implements OnInit*/ {
+  /**override Input, Ouptut */
 
   // numberInputFormGroup: FormGroup;
-
+  showMask = false;
   constructor(protected fb: FormBuilder) {
     super(fb);
   }
 
   ngOnInit() {
     super.ngOnInit();
+
+    if(this.inputvalue && this.inputvalue.length) {
+      this.showMask = true;
+    }
   }
 
   onBlur(e:string) {
-
+    /**do stuff on blur */
+    this.showMask = true;
     super.onBlur(e);
   }
-
 }
+/** extend to -> 
+ *  model formatting based on coma/dot decimal -> use a pipe convertor
+ *    - max 2 decimal for model
+ *  format on blur
+ *  apply model limits
+ */

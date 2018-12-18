@@ -64,10 +64,3 @@ export class NumberInputComponent implements OnInit, OnChanges {
   }
 
 }
-
-/** extend to -> 
- *  model formatting based on coma/dot decimal
- *  format on blur
- *  max 2 decimal for model
- *  apply model limits
- */

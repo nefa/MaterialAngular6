@@ -1,18 +1,24 @@
 <div [formGroup]="numberInputFormGroup">
   <label for="{{config.id}}" 
-    *ngIf="config.label">{{config.label}}</label>
+    *ngIf="config.label">{{config.label}}</label> || 
 
-  <input type="text" name="{{config.id}}" id="{{config.id}}" 
-    formControlName="_inputValue" 
-    (ngModelChange)="onChangeValue($event)"
-    (blur)="onBlur($event)" 
-      onlyNumberNg="true">
+
+  <ng-container *ngIf="!showMask; else maskTemplate">
+      <input type="text" name="{{config.id}}" id="{{config.id}}" 
+        formControlName="_inputValue" 
+        (ngModelChange)="onChangeValue($event)"
+        (blur)="onBlur($event)" 
+          onlyNumberNg="true">
+  </ng-container>
+  
+  <ng-template #maskTemplate>
+      <!-- @Pipe(name:'floatNumber') -->
+      <span class="looklike-input" (click)="showMask = false">{{control.value | floatNumber}}</span>
+  </ng-template>
 
   <div 
     *ngIf="control.errors && (control.dirty || control.touched)" 
     [ngStyle]="config.errorStyle">{{config.errorText}}
   </div>
-  <p>{{control.value | floatNumber}}</p>
 
-  {{control.errors | json}}
 </div>
